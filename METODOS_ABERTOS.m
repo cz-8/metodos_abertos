@@ -75,7 +75,7 @@ derivada_funcao_exercicio = @(x) (((cos(sqrt(x)))/(2.*sqrt(x))) - 1); % somente 
 es = 0.0001; % 0.01% em forma decimal
 estimativa_inicial = 0.5; % valor dado pelo exercicio
 
-fracao_de_perturbacao = 10^-6; % somente para o metodo secante
+fracao_de_perturbacao = 10^-6; % somente para o metodo secante modificada
 segunda_estimativa_inicial = 1; %somente para o metodo secante
 
 %=======================================================================
