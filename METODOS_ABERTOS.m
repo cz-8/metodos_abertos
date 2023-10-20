@@ -48,7 +48,7 @@ function secante(func,x1,x2,es)
 	while (1)
 		printf("I:%d Raiz ~= %.10f EA: %.10f \n",iter,x1,ea);
 		x1_velho = x2;
-		raiz = x2 - ((func(x2).*(x2 - x1))./(func(x2)-func(x1)));
+		raiz = x2 - ((func(x2).*(x1 - x2))./(func(x1)-func(x2)));
 		iter = iter + 1;
 		ea = abs((x1 - x1_velho)/x1) * 100;
 		if ea <= es
