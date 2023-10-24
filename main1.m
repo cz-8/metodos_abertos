@@ -8,7 +8,9 @@ function metodo_newton_raphson(func,dfunc,xr,es)
 	while (1)
 		printf("I:%d Raiz ~= %.10f EA: %.10f \n",iter,xr,ea);
 		xr_velho = xr;
+
 		xr = xr - func(xr)/dfunc(xr);
+
 		iter = iter + 1;
 		ea = abs((xr - xr_velho)/xr) * 100;
 		if ea <= es
@@ -28,13 +30,15 @@ function secante_modificado(func,xr,es,fdp)
 	while (1)
 		printf("I:%d Raiz ~= %.10f EA: %.10f \n",iter,xr,ea);
 		xr_velho = xr;
+
 		xr = xr_velho - (fdp.*xr.*func(xr))./((func(xr+fdp.*xr))-func(xr));
+
 		iter = iter + 1;
-			ea = abs((xr - xr_velho)/xr) * 100;
-			if ea <= es
-				printf("I:%d Raiz ~= %.10f EA: %.10f INFO: Criterio de parada satisfeito! \n",iter,xr,ea);
-				break;
-			endif;
+		ea = abs((xr - xr_velho)/xr) * 100;
+		if ea <= es
+			printf("I:%d Raiz ~= %.10f EA: %.10f INFO: Criterio de parada satisfeito! \n",iter,xr,ea);
+			break;
+		endif;
 	endwhile;
 
 	printf("\n\n")
@@ -80,7 +84,6 @@ segunda_estimativa_inicial = 1; %somente para o metodo secante
 
 %=======================================================================
 
-
 %parte 3: Execução; Esse pedaço de codigo serve para rodar os diferentes metodos:
 
 %usando as variaveis especificadas a cima
@@ -91,3 +94,9 @@ printf("	Metodo_Secante_Modificada:\n\n");
 secante_modificado(funcao_exercicio,estimativa_inicial,es,fracao_de_perturbacao);
 printf("	Metodo_Secante:\n\n");
 secante(funcao_exercicio,estimativa_inicial,segunda_estimativa_inicial,es);
+
+
+
+vetor_plot =  -1:1:1;
+plot(vetor_plot,funcao_exercicio(vetor_plot))
+set(gca, 'XAxisLocation', 'origin', 'YAxisLocation', 'origin');
